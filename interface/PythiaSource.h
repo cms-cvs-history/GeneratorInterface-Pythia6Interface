@@ -71,6 +71,8 @@ namespace edm
     double etamin, etamax;
     double phimin, phimax;
     double comenergy;
+    double emin, emax;
+    bool flatEnergy;
     
     bool stopHadronsEnabled;
     bool gluinoHadronsEnabled;

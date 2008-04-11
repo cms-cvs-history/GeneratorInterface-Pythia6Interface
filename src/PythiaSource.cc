@@ -1,6 +1,6 @@
 /*
- *  $Date: 2008/04/08 17:25:21 $
- *  $Revision: 1.22 $
+ *  $Date: 2008/04/09 21:04:04 $
+ *  $Revision: 1.23 $
  *  
  *  Filip Moorgat & Hector Naves 
  *  26/10/05
@@ -243,8 +243,8 @@ PythiaSource::PythiaSource( const ParameterSet & pset,
   }
   }
 
-   stopHadronsEnabled = pset.getUntrackedParameter<bool>("stopHadrons");
-   gluinoHadronsEnabled = pset.getUntrackedParameter<bool>("gluinoHadrons");
+  stopHadronsEnabled = pset.getUntrackedParameter<bool>("stopHadrons", false);
+  gluinoHadronsEnabled = pset.getUntrackedParameter<bool>("gluinoHadrons", false);
 
   //Init names and pdg code of r-hadrons
    if(stopHadronsEnabled)  PYSTRHAD();

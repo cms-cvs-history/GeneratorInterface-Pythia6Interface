@@ -1,3 +1,5 @@
+include "GeneratorInterface/Pythia6Interface/data/pythiaDefault.cff"
+
 source = PythiaSource 
 { 
   untracked int32 pythiaPylistVerbosity = 0
@@ -16,7 +18,7 @@ source = PythiaSource
 
     # Default (mostly empty - to keep PYTHIA default) card file
     # Name of the set is "pythiaDefault"
-include "GeneratorInterface/Pythia6Interface/data/pythiaDefault.cff"
+    using pythiaDefaultBlock
 
 
     vstring pythiaMinBias = {

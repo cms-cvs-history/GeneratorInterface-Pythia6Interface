@@ -1,4 +1,6 @@
 
+include "GeneratorInterface/Pythia6Interface/data/pythiaDefault.cff"
+
 module pyth = PythiaProducer { 
   untracked int32 pythiaPylistVerbosity = 0
   untracked bool pythiaHepMCVerbosity = false
@@ -16,8 +18,7 @@ module pyth = PythiaProducer {
 
     # Default (mostly empty - to keep PYTHIA default) card file
     # Name of the set is "pythiaDefault"
-include "GeneratorInterface/Pythia6Interface/data/pythiaDefault.cff"
-
+    using pythiaDefaultBlock
 
     vstring pythiaMinBias = {
       'MSEL=0         ! User defined processes',

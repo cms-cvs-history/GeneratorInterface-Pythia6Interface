@@ -2,6 +2,10 @@
 include "GeneratorInterface/Pythia6Interface/data/pythiaDefault.cff"
 
 module pyth = PythiaProducer { 
+  
+  string pythiaFrame = "CMS"
+  double comEnergy = 14000.
+  
   untracked int32 pythiaPylistVerbosity = 0
   untracked bool pythiaHepMCVerbosity = false
 

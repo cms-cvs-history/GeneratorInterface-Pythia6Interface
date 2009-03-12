@@ -12,8 +12,8 @@ process.maxEvents = cms.untracked.PSet(
 process.source = cms.Source("EmptySource")
 
 process.configurationMetadata = cms.untracked.PSet(
-    version = cms.untracked.string('$Revision: 1.4 $'),
-    name = cms.untracked.string('$Source: /cvs_server/repositories/CMSSW/CMSSW/GeneratorInterface/Pythia6Interface/test/Ztautau2.cfg,v $'),
+    version = cms.untracked.string('$Revision: 1.1 $'),
+    name = cms.untracked.string('$Source: /cvs_server/repositories/CMSSW/CMSSW/GeneratorInterface/Pythia6Interface/test/Ztautau2_cfg.py,v $'),
     annotation = cms.untracked.string('Z to tau tau')
 )
 process.RandomNumberGeneratorService = cms.Service("RandomNumberGeneratorService",
@@ -29,7 +29,7 @@ process.pyth = cms.EDProducer("PythiaProducer",
     ExternalGenerators = cms.PSet(
         Tauola = cms.untracked.PSet(
             TauolaPolar,
-            TauolaDefaultInputCards
+            TauolaDefaultInputForSource
         ),
         parameterSets = cms.vstring('Tauola')
     ),

@@ -1,6 +1,6 @@
 /*
- *  $Date: 2009/03/17 17:38:22 $
- *  $Revision: 1.6 $
+ *  $Date: 2009/03/27 18:09:46 $
+ *  $Revision: 1.7 $
  *  \author Julia Yarba
  */
 
@@ -12,6 +12,7 @@
 #include "FWCore/Utilities/interface/Exception.h"
 
 #include "FWCore/Framework/interface/EDProducer.h"
+#include "FWCore/Framework/interface/Event.h"
 #include "FWCore/Framework/interface/EventSetup.h"
 
 #include "SimDataFormats/GeneratorProducts/interface/HepMCProduct.h"

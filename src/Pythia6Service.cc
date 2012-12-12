@@ -26,7 +26,7 @@
 
 // This will force the symbols below to be kept, even in the case pythia6
 // is an archive library.
-extern "C" void pyexec_(void);
+//extern "C" void pyexec_(void);
 extern "C" void pyedit_(void);
 __attribute__((visibility("hidden"))) void dummy()
 {
@@ -205,16 +205,36 @@ void Pythia6Service::setGeneralParams()
 
 void Pythia6Service::setCSAParams()
 {
-      
-   txgive_init_();
+#define SETCSAPARBUFSIZE 514
+   char buf[SETCSAPARBUFSIZE];
    
+   txgive_init_();
    for(std::vector<std::string>::const_iterator iter = fParamCSA.begin();
 	                                        iter != fParamCSA.end(); ++iter)
    {
-      txgive_( iter->c_str(), iter->length() );
+      // Null pad the string should not be needed because it uses
+      // read, which will look for \n, but just in case...
+      for (size_t i = 0; i < SETCSAPARBUFSIZE; ++i)
+        buf[i] = ' ';
+      // Skip empty parameters.
+      if (iter->length() <= 0)
+        continue;
+      // Limit the size of the string to something which fits the buffer.
+      size_t maxSize = iter->length() > (SETCSAPARBUFSIZE-2) ? (SETCSAPARBUFSIZE-2) : iter->length();
+      strncpy(buf, iter->c_str(), maxSize);
+      // Add extra \n if missing, otherwise "read" continues reading. 
+      if (buf[maxSize-1] != '\n')
+      {
+         buf[maxSize] = '\n';
+         // Null terminate in case the string is passed back to C.
+         // Not sure that is actually needed.
+	 buf[maxSize + 1] = 0;
+      }
+      txgive_(buf, iter->length() );
    }   
    
    return ;
+#undef SETCSAPARBUFSIZE
 }
 
 void Pythia6Service::openSLHA( const char* file )
